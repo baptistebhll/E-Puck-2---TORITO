@@ -1,0 +1,70 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "TP4 Solution: Make",
+            "type": "shell",
+            "command": "${config:make_path} -j",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": "$gcc",
+            "options": {
+                "cwd": "${workspaceFolder}/src/",
+                "windows": {
+                    "shell": {
+                        "executable": "cmd.exe",
+                        "args": ["/d", "/C"]
+                    }
+                }
+            },
+            "presentation": {
+                "echo": false,
+            }
+        },
+        {
+            "label": "TP4 Solution: Clean",
+            "type": "shell",
+            "command": "${config:make_path} clean",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/src/",
+                "windows": {
+                    "shell": {
+                        "executable": "cmd.exe",
+                        "args": ["/d", "/C"]
+                    }
+                }
+            },
+            "presentation": {
+                "echo": false,
+            }
+        },
+        {
+            "label": "TP4 Solution:(Link Library e-puck2_main-processor)",
+            "type": "shell",
+            "command": "LIB=e-puck2_main-processor; if [ -d $LIB ] ; then echo -n -e '\\033[0;91m'Link $LIB already present ; echo '\\033[0m'>>/dev/null ; else ln -s ${config:workplace}/EPuck2_Workplace/Lib/$LIB . ; echo -n -e '\\033[1;32m'Link $LIB done ! ; echo '\\033[0m'>>/dev/null ; fi ; echo '\n'",
+            "windows": {
+                // DON'T FORGET to change the name of the library (LibName) in 3 places:
+                // 1. LIB=LibName
+                // 2. -Path LibName
+                // 3. -Target ${config:workplace}/EPuck2_Workplace/Lib/LibName
+                // because there is no possible expansion in the 2 last ones!!
+                "command": "LIB=e-puck2_main-processor; if [ -d $LIB ] ; then echo -n -e '\\033[0;91m'Link $LIB already present ; echo '\\033[0m'>>/dev/null ; else powershell -command 'New-Item -ItemType Junction -Path e-puck2_main-processor -Target ${config:workplace}/EPuck2_Workplace/Lib/e-puck2_main-processor' >>/dev/null; echo -n -e '\\033[1;32m'Link $LIB done ! ; echo '\\033[0m'>>/dev/null ; fi ; echo '\n'",
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": false,
+            }
+        }
+    ]
+}

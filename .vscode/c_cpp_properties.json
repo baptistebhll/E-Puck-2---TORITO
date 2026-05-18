@@ -1,0 +1,58 @@
+{
+    "configurations": [
+        {
+            "name": "EPUCK2 ARM C",
+            "forcedInclude": ["${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//ext//CMSIS//ST//stm32f407xx.h"],
+            "includePath": [
+                "${config:gcc_arm_path}//lib//gcc//arm-none-eabi//7.2.1//include//",
+                // ToDo : Check but for me the src project folder must not be added. Must be test - Dany
+                // I guess it is safer to have the src included just in case - Antoine
+                // It is really not necessary - Dany
+                // "${workspaceFolder}//src//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//src//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//src//msgbus//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//common//ports//ARMCMx//devices//STM32F4xx//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//rt//ports//ARM//compilers//GCC//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//rt//ports//ARM//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os/hal//include//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os/hal//lib//streams//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//rt//include//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//hal//osal//rt//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//common//ports//ARM//devices//LPC214x//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//hal//ports//STM32//STM32F4xx//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//hal//ports//common//ARMCMx//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//hal//ports//STM32//LLD//DACv1//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//hal//ports//STM32//LLD//DMAv1//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//hal//ports//STM32//LLD//GPIOv2//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//hal//ports//STM32//LLD//I2Cv2//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//hal//ports//STM32//LLD//OTGv1//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//hal//ports//STM32//LLD//RTCv2//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//hal//ports//STM32//LLD//SPIv1//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//hal//ports//STM32//LLD//TIMv1//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//hal//ports//STM32//LLD//USARTv2//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//hal//ports//STM32//LLD//USBv1//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS//os//hal//ports//STM32//LLD//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS_ext//os//hal//boards//epuck2//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS_ext//os//hal//include//",
+                "${config:workplace}//EPuck2_Workplace//Lib//e-puck2_main-processor//ChibiOS_ext//ext//CMSIS//Include//"
+            ],
+            "defines": [
+                "HAL_USE_PAL",
+                "STM32F407xx",
+                "STM32F0XX"
+            ],
+            "compilerPath": "${config:gcc_arm_path_compiler}",
+            "compilerArgs": [
+                "-mcpu=cortex-m4",
+                "-mthumb",
+                "-mfloat-abi=hard"
+            ],
+            "compileCommands": "${default}",
+            "cStandard": "c99",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "gcc-arm",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}

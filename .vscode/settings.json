@@ -1,0 +1,10 @@
+{
+    // Modify the com_port settings accordingly
+    // 1) Windows: check the com_port using the device manager, find the one with "GDB SERVER"
+    //      -> "com_port": "\\\\.\\COMx"
+    // 2) Linux: use "List Epuck2 ports" task
+    //      -> "com_port": "/dev/ttyACMx"
+    // MacOS: use the command "ls /dev/cu.*" and use the lowest one
+    //      -> "com_port": "/dev/cu.usbmodemEPUCKx"
+    "com_port": "\\\\.\\COM7",
+}
