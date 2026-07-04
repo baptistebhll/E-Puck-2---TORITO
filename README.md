@@ -8,7 +8,7 @@
 > An **e-puck2** robot turned into a little bull: it hunts for red with its camera, charges at it like a bull at a matador's *muleta*, and steers around obstacles along the way.
 
 <p align="center">
-  <img src="assets/torito.jpg" alt="The TORITO robot in its arena" width="420">
+  <img src="torito.jpg" alt="The TORITO robot in its arena" width="420">
 </p>
 
 ---
