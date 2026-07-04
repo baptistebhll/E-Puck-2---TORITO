@@ -23,7 +23,7 @@ The project uses every sensor and actuator on the robot: the two stepper motors,
 
 - **Active search** for a red target via a rotating camera sweep.
 - **Regulated pursuit** (PID) that controls both distance to and orientation toward the target.
-- **Autonomous avoidance** of cubic obstacles with a 6 cm side, driven by a sub-state machine.
+- **Autonomous avoidance** of cubic obstacles.
 - **Continuous obstacle detection**: a new detection during the maneuver interrupts and resets the sequence, so the robot never gets trapped.
 - **Gain-based IR normalization**: a single threshold drives all the logic, despite heterogeneous and non-linear sensors.
 
@@ -40,21 +40,21 @@ The project uses every sensor and actuator on the robot: the two stepper motors,
 
 The code relies on the official **[`e-puck2_main-processor`](https://github.com/e-puck2/e-puck2_main-processor)** library (the e-puck2 STM32F407 firmware, based on ChibiOS). This repository was developed and tested against commit [`a220d82`](https://github.com/e-puck2/e-puck2_main-processor/tree/a220d827951f09f63bd1016635215ea3b20f40f8).
 
-The library provides the drivers (`motors`, `camera/po8030`, `sensors/proximity`, `sensors/imu`, `camera/dcmi_camera`), the ChibiOS RTOS, and the message bus (`msgbus/messagebus`) used for inter-thread communication.
+The library provides the drivers, the ChibiOS RTOS, and the message bus used for inter-thread communication.
 
 ## Repository structure
 
 ```
 .
 ├── main.c                 # Hardware initialization and thread startup
-├── main.h                 # Shared declarations (message bus, LED, library includes)
+├── main.h                 
 ├── robot_management.c     # Main state machine + obstacle-avoidance logic
-├── robot_management.h     # States, sub-states, geometric constants, IR gains
+├── robot_management.h     
 ├── process_image.c        # Camera capture + processing (red detection, distance, position)
-├── process_image.h        # Image-processing constants
+├── process_image.h        
 ├── pid_regulator.c        # PID controller (distance + orientation) for the pursuit
-├── pid_regulator.h        # PID gains and thresholds
-└── Makefile               # (references the neighboring e-puck2_main-processor library)
+├── pid_regulator.h        
+└── Makefile               
 ```
 
 ## Software architecture
@@ -109,7 +109,7 @@ The camera therefore does double duty: the **width** of the red band gives the d
 
 ## Obstacle avoidance
 
-The maneuver is designed for cubic obstacles with a 6 cm side. It triggers when IR1 **or** IR8 (front sensors) measures a distance ≤ 1 cm. The robot then runs a sub-state machine that goes around the cube in four phases:
+The maneuver is designed for cubic obstacles with a 6 cm side (but can be easily adapted to any shape). It triggers when IR1 **or** IR8 (front sensors) measures a distance ≤ 1 cm. The robot then runs a sub-state machine that goes around the cube in four phases:
 
 1. **Alignment and first turn** — the robot aligns perpendicular to the wall, turns 90° left, then follows the cube until its right-side sensor (IR3) no longer detects it.
 2. **Lateral clearance** — it keeps going straight for a safety margin, then turns 90° right.
@@ -189,7 +189,7 @@ The project follows the standard e-puck2 development toolchain. In short:
    make
    ```
    The binary is generated in `build/`.
-4. Flash the STM32F407 through the robot's built-in programmer/debugger (USB connection), from Eclipse or via the embedded gdb server.
+4. Flash the STM32F407 through the robot's built-in programmer/debugger (USB connection)via the embedded gdb server.
 
 > The exact commands depend on the course's toolchain setup; refer to the [official documentation](https://www.gctronic.com/doc/index.php/e-puck2_robot_side_development) if in doubt.
 
