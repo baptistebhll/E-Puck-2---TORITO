@@ -195,7 +195,7 @@ The project follows the standard e-puck2 development toolchain. In short:
 
 ## Authors
 
-- **Bouilhol Baptiste** (379847)
-- **Brognart Colombe** (380082)
+- **Bouilhol Baptiste** 
+- **Brognart Colombe** 
 
 Embedded systems project — **MICRO-315** course, EPFL, May 2026.
